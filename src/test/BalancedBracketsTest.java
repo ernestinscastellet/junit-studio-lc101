@@ -2,15 +2,24 @@ package test;
 
 import org.junit.Test;
 
+import static main.BalancedBrackets.hasBalancedBrackets;
 import static org.junit.Assert.*;
 
 public class BalancedBracketsTest {
 
-    //TODO: add tests here
     @Test
-    public void emptyTest() {
-        assertEquals(true, true);
+    public void onlyBracketsReturnsTrue() {
+        assertTrue(hasBalancedBrackets("[]"));
     }
 
+    @Test
+    public void nestedBracketsAreAllowed() {
+        assertTrue(hasBalancedBrackets("[[]]"));
+    }
+
+    @Test
+    public void bracketsMustFollowOpenCloseOrder() {
+        assertFalse(hasBalancedBrackets("]["));
+    }
 
 }
